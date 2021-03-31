@@ -24,7 +24,7 @@ public class MercadoLibrePage extends Base{
     By continuar = By.cssSelector("#login_user_form > div.login-form__actions > button");
     By contraseña = By.id("password"); 
     By ingresar = By.id("action-complete");
-    By playcinco = By.cssSelector("#root-app > div > div.ui-search-main.ui-search-main--exhibitor.ui-search-main--only-products > section > ol > li:nth-child(1) > div > div > div.ui-search-result__content-wrapper > div.ui-search-item__group.ui-search-item__group--title > a.ui-search-item__group__element.ui-search-link > h2");
+    By playcinco = By.cssSelector("#root-app > div > div.ui-search-main.ui-search-main--only-products > section > ol > li:nth-child(1) > div > div > div.ui-search-result__content-wrapper > div.ui-search-item__group.ui-search-item__group--title > a.ui-search-item__group__element.ui-search-link > h2");
     By piezas = By.cssSelector("#root-app > div.ui-pdp > div.ui-pdp-container.ui-pdp-container--pdp > div.ui-pdp-container__row.ui-pdp--relative.ui-pdp-with--separator--fluid.pb-40 > div.ui-pdp-container__col.col-1.ui-pdp-container--column-right.mt-16.pr-16 > div:nth-child(1) > form > div.ui-pdp-buybox__quantity.mb-20 > div.andes-tooltip__trigger > div > button > span");   
     By unapieza = By.xpath("/html/body/div[7]/div/div/div/div[2]/div/div[2]/div/div[3]/div/ul/li[1]/button");
     By dospiezas = By.xpath("/html/body/div[7]/div/div/div/div[2]/div/div[2]/div/div[3]/div/ul/li[2]/button");
@@ -40,7 +40,8 @@ public class MercadoLibrePage extends Base{
 
     public void loginUser() throws InterruptedException {
     	click(ingresa);
-    	type("mendrano254@hotmail.com",usuario);
+    	type("murillo_4312@hotmail.com",usuario);
+    	Thread.sleep(1000);
     	click(continuar);
     	    	
     }

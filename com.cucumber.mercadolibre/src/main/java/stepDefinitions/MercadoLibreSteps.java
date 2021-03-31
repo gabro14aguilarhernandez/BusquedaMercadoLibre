@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import cucumber.api.java.en.*;
@@ -22,14 +24,15 @@ public class MercadoLibreSteps {
 	    // Write code here that turns the phrase above into concrete actions
 		mercadolibrepage.visit("https://www.mercadolibre.com");
 	    driver.manage().window().maximize();
-	    Thread.sleep(2000);
+	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 	}
 
 	@When("^Selecciona el país de compra$")
 	public void selecciona_el_país_de_compra() throws Throwable {
-	mercadolibrepage.pais();
-    Thread.sleep(2000);	
-    System.out.println("Ingresaste desde Mexico al realizar tu compra");
+		mercadolibrepage.pais();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		System.out.println("Ingresaste desde Mexico al realizar tu compra");
 	
 	}
 	
@@ -37,13 +40,14 @@ public class MercadoLibreSteps {
 	@And("^Ingresa y captura el usuario$")
 	public void ingresa_y_captura_el_usuario() throws Throwable {
 		mercadolibrepage.loginUser();
-        Thread.sleep(1500);   
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 	}
 
 	@And("^captura la contraseña y inicia sesion$")
 	public void captura_la_contraseña_y_inicia_sesion() throws Throwable {
 		mercadolibrepage.loginPass();
-        
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@Then("^Ingresa el criterio de búsqueda$")
@@ -54,14 +58,15 @@ public class MercadoLibreSteps {
 	@And("^Se inicia la busqueda$")
 	public void se_inicia_la_busqueda() throws Throwable {
 		mercadolibrepage.lupaBusqueda();
-        Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 	}
 	    
 
 	@And("^Se quita el popup de ingrese codigo postal$")
 	public void se_quita_el_popup_de_ingrese_codigo_postal() throws Throwable {
 	    mercadolibrepage.popupCp();
-	    Thread.sleep(1500);
+	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 	}
 
 	@When("^Selecciona el producto a comprar del resultado de busqueda$")
@@ -73,18 +78,10 @@ public class MercadoLibreSteps {
 
 	@And("^Dar clic en cantidad$")
 	public void dar_clic_en_cantidad() throws Throwable {
-		 JavascriptExecutor jsx3 = (JavascriptExecutor)driver;
-	     jsx3.executeScript("window.scrollBy(0,500)", "");
+
 	     Thread.sleep(1000);
 	     mercadolibrepage.cantidad();   
 	     Thread.sleep(2000);
-	}
-
-	@Then("^Selecciona la cantidad de cuatro productos$")
-	public void selecciona_la_cantidad_de_cuatro_productos() throws Throwable {
-	   mercadolibrepage.cuatrop();
-       Thread.sleep(1500);
-       System.out.println("Se agregaron 3 productos a su carrito de compra");
 	}
 
 	@And("^Agregar al carrito de compra$")
@@ -95,13 +92,6 @@ public class MercadoLibreSteps {
 	@And("^Cierras el navegador$")
 	public void cierras_el_navegador() throws Throwable {
 	    driver.close();
-	}
-  // se agrega el metodo para tres productos
-	@Then("^Selecciona la cantidad de tres productos$")
-	public void selecciona_la_cantidad_de_tres_productos() throws Throwable {
-	   mercadolibrepage.tresp();
-	    Thread.sleep(1500);
-	System.out.println("Se agregaron 3 productos a su carrito de compra");    
 	}
  // se agrega el metodo para agregar la cantidad requerida de productos
 	@Then("^Selecciona la cantidad de productos \"([^\"]*)\"$")

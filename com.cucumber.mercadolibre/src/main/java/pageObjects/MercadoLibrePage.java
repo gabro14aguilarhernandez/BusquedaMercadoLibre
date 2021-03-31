@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,7 +41,6 @@ public class MercadoLibrePage extends Base{
     public void loginUser() throws InterruptedException {
     	click(ingresa);
     	type("mendrano254@hotmail.com",usuario);
-    	Thread.sleep(1500);
     	click(continuar);
     	    	
     }
@@ -77,18 +77,11 @@ public class MercadoLibrePage extends Base{
     	click(playcinco);
     }
     public void cantidad () {
+		scroll();
     	click(piezas);
     	System.out.println(playcinco);
     }
     
-    public void tresp() {
-    	click(trespiezas);  	
-    }
-    
-    public void cuatrop() {
-    	click(cuatropiezas);
-    }
-
     public void cantidadProducto(int cantidad) {
     	
     	this.cantidadd = cantidad;

@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +27,16 @@ public class Base {
 
         return driver.findElement(locator);
     }
+    
+    // metodo para hacer Scroll
+    
+    public void scroll () {
+    	JavascriptExecutor jsx3 = (JavascriptExecutor)driver;
+	    jsx3.executeScript("window.scrollBy(0,500)", "");
+    	    	
+    }
+    
+    
     // Metodo para extraer lista de elementos
     //  Public List<WebElement> findElement(By locator){
     //     return driver.findElements(locator);

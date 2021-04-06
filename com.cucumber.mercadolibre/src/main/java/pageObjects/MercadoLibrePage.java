@@ -1,7 +1,10 @@
 package pageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,6 +21,7 @@ public class MercadoLibrePage extends Base{
     By mexico = By.cssSelector("#MX");
     By cuadroBusqueda = By.cssSelector("body > header > div > form > input");
     By lupa = By.cssSelector("body > header > div > form > button");
+    By resultado = By.cssSelector("#root-app > div > div.ui-search-main.ui-search-main--only-products > aside > div.ui-search-breadcrumb > h1");
     By popUpIngresaCP = By.cssSelector("body > div.onboarding-cp > div > div > div.andes-tooltip-inner > div > span");
     By ingresa = By.cssSelector("#nav-header-menu > a:nth-child(2)");
     By usuario = By.id("user_id");
@@ -40,9 +44,12 @@ public class MercadoLibrePage extends Base{
 
     public void loginUser() throws InterruptedException {
     	click(ingresa);
-    	type("murillo_4312@hotmail.com",usuario);
-    	Thread.sleep(1000);
-    	click(continuar);
+    	Thread.sleep(2000);
+    	type("sauza_222@hotmail.com",usuario);
+    	tab(usuario);
+    	Thread.sleep(2000);
+    	enter(continuar);
+    	
     	    	
     }
     
@@ -50,18 +57,23 @@ public class MercadoLibrePage extends Base{
     	    	
     	type("A1s2d3f4g5.",contraseña);
     	click(ingresar);
-    	esperaMientras(botonentendido);
+    	explicitWaitElementVisible(botonentendido);
         String nombot = getText(botonentendido);
         System.out.println("el mensaje si salio y es:" + nombot);
+        implicitWait();
        
     	}
     
     public void pais (){
-        click(mexico); 
+        click(mexico);
+        explicitWaitElementVisible(cuadroBusqueda);
+        
+        
     }
 
     public void popupCp (){
         click(popUpIngresaCP); 
+        
     }
     public void buscar(){
         type("PlayStation5",cuadroBusqueda);
@@ -70,17 +82,20 @@ public class MercadoLibrePage extends Base{
 
     public void lupaBusqueda(){
         click(lupa);
+        explicitWaitElementVisible(popUpIngresaCP);
     }
     
     public void producto() {
     	String productoSeleccionado = getText(playcinco);
     	System.out.print(productoSeleccionado);
     	click(playcinco);
+    	explicitWaitElementVisible(piezas);
     }
-    public void cantidad () {
+    public void cantidad () throws InterruptedException {
 		scroll();
+		Thread.sleep(1000);
     	click(piezas);
-    	System.out.println(playcinco);
+    	explicitWaitElementVisible(agregarcarrito);
     }
     
     public void cantidadProducto(int cantidad) {

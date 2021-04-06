@@ -9,12 +9,12 @@ Feature: Búsqueda en mercado libre
     When Selecciona el país de compra
     And Ingresa y captura el usuario
     And captura la contraseña y inicia sesion
-    Then Ingresa el criterio de búsqueda
+    And Ingresa el criterio de búsqueda
     And Se inicia la busqueda
     And Se quita el popup de ingrese codigo postal
-    When Selecciona el producto a comprar del resultado de busqueda
+    Then Selecciona el producto a comprar del resultado de busqueda
     And Dar clic en cantidad
-    Then Selecciona la cantidad de productos "<cantidad>"
+    And Selecciona la cantidad de productos "<cantidad>"
     And  Agregar al carrito de compra
     And Cierras el navegador
 

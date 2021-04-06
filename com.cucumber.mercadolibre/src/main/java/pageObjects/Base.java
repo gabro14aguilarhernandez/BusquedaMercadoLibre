@@ -1,7 +1,10 @@
 package pageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,6 +39,16 @@ public class Base {
     	    	
     }
     
+    public void explicitWaitElementVisible(By locator) {
+    	WebDriverWait mientrasElementVisible = new WebDriverWait(driver, 10);
+    	mientrasElementVisible.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	   
+    }
+    
+    public void implicitWait () {
+    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    
     
     // Metodo para extraer lista de elementos
     //  Public List<WebElement> findElement(By locator){
@@ -53,14 +66,7 @@ public class Base {
 
         return driver.findElement(locator).getText();
     }
-    
-	
-    public void esperaMientras(By locator){
-    	WebDriverWait esperaMenuPricipal = new WebDriverWait(driver,600);
-        esperaMenuPricipal.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-    
-    
+       
     // este metodo sirve para escribir texto
 
     public void type(String inputText, By locator){
@@ -72,8 +78,20 @@ public class Base {
     public void click(By locator){
 
         driver.findElement(locator).click();
+    } 
+    //Metodo TAB
+    public void tab(By locator){
+
+        driver.findElement(locator).sendKeys(Keys.TAB);
     }
 
+  //Metodo Enter
+    public void enter(By locator){
+
+        driver.findElement(locator).sendKeys(Keys.ENTER);
+    }
+    
+    
 
 /*        // Est emetodo nos dice si el elemento se encuentra listo para ser utilizado
        public Boolean isDisplayed() {
